@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<title>JavaScript</title>
 <html>
+ 
 <body>
-<h2>Author entry</h2>
+
+<h2>Getting input</h2>
 
 <form>
-    <label for="secretString">The hideen author name</label>
-    <input type ="password" id="secretString" name="Dickens" min=10 max=50 step=2 value=30> <br>
+    <label for="author_Name">The hidden Author Name </label>
+    <input type ="password" id="author_Name" name="author_Name" value="Dickens"> <br>
 
-    <label for="guessInput">Guess the author</label>
-    <input type ="text" id="guessInput" name="form1_nick" autofocus> <br>
+    <label for="guess_author">Guess your Author</label>
+    <input type ="text" id="guess_Author" name="guess_Author" > <br>
 
-    <input type="button" onclick="checkAuthor()" value="Check the guess">
+    <input type="button" onclick="checkAuthor()" value="check the Guess">
 </form>
+
 
 <p id="result">This text will be replaced </p>
 
@@ -20,21 +22,29 @@
 var good=0;
 var oops=0;
 function checkAuthor(){
-    console.log("Getting form values")
-    good=document.getElementById(secretString).value
-    oops=docuemnt.getElementById(guessInput).value
-    confirmed = confirm("Are these the values?" + good+" and "+oops)
+    
+    name = document.getElementById("author_Name").value
+    author = document.getElementById("guess_Author").value
+    out=document.getElementById("result")
+    if(name==author)
+    {
+        good=good+1;
+        alert("You got it right");
+        
 
-    out= document.getElementById("result")
-    if(confirmed){
-        out.innerHTML="You got it right"
-    }else{
-        out.innerHtml="Sorry"
+    }else
+    {
+        oops=oops+1;
+        alert("Sorry");
+
+
     }
+     //out=document.getElementById("");
+    result.innerHTML="Good:" +good+ ",OOPS" +oops;
+    
+    
 }
 </script>
 
 </body>
-</html> 
 </html>
-

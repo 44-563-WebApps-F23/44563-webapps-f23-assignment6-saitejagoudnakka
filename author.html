@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<title>JavaScript</title>
+<html>
+ 
+<body>
+
+<h2>Author entry</h2>
+
+<form>
+    <label for="secretString">The hideen author name</label>
+    <input type ="password" id="secretString" name="Dickens" min=10 max=50 step=2 value=30> <br>
+
+    <label for="guessInput">Guess the author</label>
+    <input type ="text" id="guessInput" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="checkAuthor()" value="Check the guess">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+var good=0;
+var oops=0;
+function checkAuthor(){
+    console.log("Getting form values")
+    good=document.getElementById(secretString).value
+    oops=docuemnt.getElementById(guessInput).value
+    confirmed = confirm("Are these the values?" + good+" and "+oops)
+
+    out= document.getElementById("result")
+    if(confirmed){
+        out.innerHTML="You got it right"
+    }else{
+        out.innerHtml="Sorry"
+    }
+
+}
+</script>
+
+</body>
+</html> 

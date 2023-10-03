@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- 
+ <title>Author</title>
 <body>
 
 <h2>Getting input</h2>
@@ -46,13 +46,29 @@ function checkAuthor(){
 }
 </script>
 
-<div><img src="amsterdam.jpg" alt="amsterdam" width="100px" height="100px" onclick="selectImage()">
+<div id="Container">
+    <img id ="cityImage" src="amsterdam.jpg" alt="city image" height="100" width="100" onclick="selectImage()">
 </div>
 <script>
-    var useImage=1;
+    var useImage=1
     function selectImage(){
+       var imageElement=document.getElementById("cityImage")
         switch(useImage){
             case 1: 
+            imageElement.src = "austin.jpg";
+             useImage=2;
+            break;
+            
+            case 2: 
+            imageElement.src = "nagasaki.jpg";
+             useImage=3;
+            break;
+            case 3: imageElement.src = "amsterdam.jpg"
+             useImage=1;
+            break;
+            
+
+            
         }
     }
 </script>
@@ -60,3 +76,5 @@ function checkAuthor(){
 
 </body>
 </html>
+
+

@@ -17,36 +17,23 @@
 <p id="result">This text will be replaced </p>
 
 <script>
+    //tips function
     function tips(){
-        var baseValue= parseFloat(document.getElementById("baseAmount").value);
-       var tip=parseFloat(document.getElementById("tipPercent").value);
-       var toShow = "Tips are: ";   
+        let baseValue= parseFloat(document.getElementById("baseAmount").value);
+       let tip=parseFloat(document.getElementById("tipPercent").value);
+       let myOutput = " ";   
        
-        for(var i=0;i<=5;i++){
-            var calculatedTip = baseValue + (tip+(i*4));
-            toShow+=tip + "% is calculated tip; " + calculatedTip + "; ";
+        for(let i=0;i<5;i++){
+            let calculatedTip = (baseValue * (tip+i*4));
+            myOutput+= (tip+i*4) + "% is calculated tip; " + calculatedTip.toFixed(2) + ";" + "\n";
         }
-            document.getElementById('result').innerHTML=toShow;
+            let tipResultsElement = document.getElementById("result");
+            tipResultsElement.innerHTML = "Tips are: " + myOutput;
+           
+            // document.getElementById('result').innerHTML=toShow;
 
     }
 </script>
-
-<!-- <script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script> -->
 
 </body>
 </html> 

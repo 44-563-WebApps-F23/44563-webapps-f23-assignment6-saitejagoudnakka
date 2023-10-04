@@ -74,6 +74,37 @@ function checkAuthor(){
 </script>
 
 
+<div>
+    <script>
+function guessAuthor(){
+      hiddenAuthorName= document.getElementById("author_Name");
+      userAuthorGuess= document.getElementById("guess_Author");
+      runout =  document.getElementById("result");
+
+      if (hiddenAuthorName == userAuthorGuess) {
+                good = good + 1;
+                alert("You got it right");
+                out.innerHTML = `Correct Guess!  good: ${good}`;
+            }
+            if(oops>=7){
+            // After 7 incorrect guesses, disable the button and show an alert
+            document.getElementById("guessButton").disabled = true;
+            alert("Sorry, ran out of guesses.");
+           }
+            else {
+                oops = oops + 1;
+                alert("Sorry");
+                out.innerHTML = `Wrong Guess! oops: ${oops}`;
+            }
+            
+    }
+
+}
+</script>
+
+</div>
+
+
 </body>
 </html>
 

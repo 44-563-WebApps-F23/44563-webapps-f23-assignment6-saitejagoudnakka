@@ -24,16 +24,52 @@
        let myOutput = " ";   
        
         for(let i=0;i<5;i++){
-            let calculatedTip = (baseValue * (tip+i*4));
-            myOutput+= (tip+i*4) + "% is calculated tip; " + calculatedTip.toFixed(2) + ";" + "\n";
+            let calculatedTip = (baseValue * (tip+i*4)/100);
+            myOutput+= (tip+i*4) + "% is calculated tip: $" + calculatedTip.toFixed(2) + ";" + "\n";
         }
             let tipResultsElement = document.getElementById("result");
             tipResultsElement.innerHTML = "Tips are: " + myOutput;
-           
-            // document.getElementById('result').innerHTML=toShow;
-
     }
 </script>
 
+<form>
+    <label for="operation"><h3>Choose Operation </h3></label>
+    <input type="radio" id="sum" name="operation" value="sum"  onclick="chooseOp()" >
+    <label for="sum">Sum</label></br>
+  
+    <input type="radio" id="difference" name="operation" value="difference" onclick="chooseOp()">
+    <label for="diff">Difference</br>
+  
+    <input type="radio" id="product" name="operation" value="product" onclick="chooseOp()">
+    <label for="mult">Product</label></br>
+
+    <input type="button" onclick="chooseOp()" value="show result">
+  </form>
+  <p id="calresult">This text will be replaced </p>
+<script> 
+function chooseOp(){
+    let baseValue= parseFloat(document.getElementById("baseAmount").value);
+    let tip=parseFloat(document.getElementById("tipPercent").value);
+    let selectedOperation = document.querySelector('input[name="operation"]:checked').value;
+    let selectresult = "";
+
+    switch (selectedOperation) {
+            case "sum":
+            selectresult = "Sum of " + baseValue + " and " + tip + " is " + (baseValue + tip);
+                break;
+            case "difference":
+            selectresult = "Difference between " + baseValue + " and " + tip + " is " + (baseValue - tip);
+                break;
+            case "product":
+            selectresult = "Product of " + baseValue + " and " + tip + " is " + (baseValue * tip);
+                break;
+            default:
+            selectresult = "Select an operation";
+        }
+        var calculationResultElement = document.getElementById("calresult");
+        calculationResultElement.innerHTML = selectresult;
+    }
+    
+</script>
 </body>
 </html> 

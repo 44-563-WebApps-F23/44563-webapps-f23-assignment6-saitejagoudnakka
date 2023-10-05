@@ -14,11 +14,17 @@
         font-size: 20px; 
         font-weight: bold; 
     }
+    .Container{
+        background-color: lightgoldenrodyellow;
+    }
+    h2{
+        background-color: lightcoral;
+    }
  </style>
 <body>
 
 <h2>Getting input</h2>
-
+<div class="Container">
 <form>
     <label for="author_Name">The hidden Author Name </label>
     <input type ="password" id="author_Name" name="author_Name" value="Dickens"> <br>
@@ -28,36 +34,47 @@
 
     <input type="button" onclick="checkAuthor()" value="check the Guess">
 </form>
+</div>
 
 
-<p id="result">This text will be replaced </p>
+<p id="result">
+    Good: <span id="good-count">0</span> <br>
+    Oops: <span id="oops-count">0</span></p>
 
 <script> 
 var good=0;
 var oops=0;
+var useImage=1;
 function checkAuthor(){
-    
-    name = document.getElementById("author_Name").value
-    author = document.getElementById("guess_Author").value
-    out=document.getElementById("result")
-    if(name==author)
-    {
-        good=good+1;
-        alert("You got it right");
-        
+      var hiddenAuthorName= document.getElementById("author_Name").value;
+      var userAuthorGuess= document.getElementById("guess_Author").value;
 
-    }else
-    {
-        oops=oops+1;
-        alert("Sorry");
+      if (hiddenAuthorName == userAuthorGuess) {
+                good++;//increment the "good" count
+                alert("You got it right");
+                
+            }
+            else{
+                oops++; //increment the "oops" count
+            if(oops>=8)
+            {
+            // After 7 incorrect guesses, disable the button and show an alert
+            document.getElementById("guessButton").onclick=function()
+            {
+            alert("Sorry, ran out of guesses.");
+           }
+        }
+            else
+             {
+                alert("Sorry");
+            }
+         }
+         //update the inner HTML for the results element
+         document.getElementById("good-count").innerHTML=good;
+         document.getElementById("oops-count").innerHTML = oops;
+        }
 
 
-    }
-     //out=document.getElementById("");
-    result.innerHTML="Good:" +good+ "OOPS" +oops;
-    
-    
-}
 </script>
 
 <div id="Container">
@@ -86,40 +103,5 @@ function checkAuthor(){
         }
     }
 </script>
-
-
-<div>
-    <script>
-function guessAuthor(){
-      hiddenAuthorName= document.getElementById("author_Name");
-      userAuthorGuess= document.getElementById("guess_Author");
-      runout =  document.getElementById("result");
-
-      if (hiddenAuthorName == userAuthorGuess) {
-                good = good + 1;
-                alert("You got it right");
-                out.innerHTML = `Correct Guess!  good: ${good}`;
-            }
-            if(oops>=7){
-            // After 7 incorrect guesses, disable the button and show an alert
-            document.getElementById("guessButton").disabled = true;
-            alert("Sorry, ran out of guesses.");
-           }
-            else {
-                oops = oops + 1;
-                alert("Sorry");
-                out.innerHTML = `Wrong Guess! oops: ${oops}`;
-            }
-            
-    }
-
-
-</script>
-
-</div>
-
-
 </body>
 </html>
-
-
